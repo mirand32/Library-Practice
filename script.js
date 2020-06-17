@@ -1,26 +1,44 @@
 // set reading list to empty array
 
-const Library = []
+const library = []
 
 // create book constructor
-function Book (author, title, fiction, read){
+function Book (author, title, genre, read){
     this.author=author,
     this.title=title,
-    this.fiction=fiction,
+    this.genre=genre,
     this.read=read;
-    console.log(this)
 }
 
-const grinch = new Book("Dr Seuss", "Grinch", true, false)
+function handleAddBook(book){
+    bookList.innerHTML += `
+        <ul class="book--row">
+            <li>${book.title}</li>
+            <li>${book.author}</li>
+            <li>${book.genre}</li>
+            <li>
+                ${book.read}
+                <button>X</button>
+            </li>
+        <ul>
+    `
+}
 
-
-// 1. Create format for user to input data
-
-// 2. Hook up input so that it adds to library
-
-// 3. Create format for userdata to be displayed
-
-// 4. Have data be updated on each submit
+function handleSubmit(e){
+    e.preventDefault()
+    const title = this.title.value;
+    const author = this.author.value;
+    const genre = this.genre.value;
+    let read = this.read.checked
+    
+    const book = new Book(author, title, genre, read)
+    library.push(book)
+    handleAddBook(book)
+    this.reset()
+}
+const bookList=document.querySelector(".library--list")
+const addBook=document.querySelector(".addBook--form");
+addBook.addEventListener("submit", handleSubmit)
 
 // 5.Add styles to page
 
@@ -28,4 +46,4 @@ const grinch = new Book("Dr Seuss", "Grinch", true, false)
 
 // 7. Add button to change read status
 
-// 8. Setup Local Storage to maintain the data
+// 8. Setup Local Storage or firebase to maintain the data
