@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reading List</title>
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-firestore.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,19 +16,20 @@
         <div class="library--categories">Author</div>
         <div class="library--categories">Genre</div>
         <div class="library--categories">Read</div>
+        <div class="library--categories"></div>
         <div class="library--list">
         </div>
-        <button class="displayFormButton">Add Book</button>
+        <button class="library--button" onclick=toggleDisplay()>Add Book</button>
     </div>
     <form action="" method="" class="addBook--form">
         <ul>
             <li class="addBook--input">
                 <label for="title">Title</label>
-                <input type="text" id="title">
+                <input type="text" id="title" required>
             </li>
             <li class="addBook--input">
                 <label for="author">Author</label>
-                <input type="text" id="author">
+                <input type="text" id="author" required>
             </li>
             <li class="addBook--input">
                 <label for="genre">Genre</label>
@@ -70,7 +74,29 @@
         </ul>
         <button class="addBook--button" name="submit">Add Book</button>
     </form>
-    <script src = "script.js">
-    </script>    
+    
+    <!-- Scripts -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    
+    <script>
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCtz97wt7yhm-fMK3fvI21Axz80A40ALl0",
+            authDomain: "book-library-bb5a4.firebaseapp.com",
+            databaseURL: "https://book-library-bb5a4.firebaseio.com",
+            projectId: "book-library-bb5a4",
+            storageBucket: "book-library-bb5a4.appspot.com",
+            messagingSenderId: "230180982824",
+            appId: "1:230180982824:web:4ccc00fe0e3e574328251d",
+            measurementId: "G-TS3E4ZS4ED"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+
+    <script src = "app.js"></script>    
 </body>
 </html>

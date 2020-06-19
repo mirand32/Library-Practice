@@ -4,82 +4,188 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 
-body{
-    background: var(--white);
+html{
     font-size: 10px;
 }
 
+body{
+    background: linear-gradient(to right, #2D7D9A, #9A7AA0);
+}
+
+
 :root{
-    --white:#F1EFF0;
-    --pink:#DC96B8;
-    --purple:#902D5E;
-    --black:#010001;
+    --primary:#2D7D9A;
+    --secondary:#D5DFE5;
+    --accent:#904E55;
+    --black:#262626;
+    --grey:#646464;
 }
 
 h1{
     text-align: center;
-    color: var(--black);
-    font: bold 7rem Helvetica;
-    margin-bottom: 70px;
+    color:var(--black);
+    font: bold 7rem 'Sriracha', cursive;
+    margin-bottom: 4rem;
 }
 
+/* Categories */
+
 .library{
-    color: var(--black);
+    color: var(--secondary);
     display: grid;
     width: 80%;
     margin: 0 auto;
-    background: var(--pink);
-    border: 2px solid var(--purple);
-    box-shadow: 0 0 2px rgba(0,0,0,0.3);
-    grid-template-columns: repeat(4, 1fr);
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    grid-template-columns: 3fr 3fr 3fr 3fr 1fr ;
     justify-items: center;
     align-items: center;
     grid-auto-rows: auto;
 }
 
-.library--categories{
-    font-size: 20px;
-    font-weight: bold;
+.library--categories,
+.book--row li{
     padding: 10px 0;
-    border-bottom: 1px solid var(--purple);
-    border-left: 1px solid var(--purple);
     width: 100%;
     text-align: center;
+    height: 100%;
+    border-left: 1px solid var(--grey);
 }
 
-.library .library--categories:first-of-type{
+.library--categories{
+    border-bottom: 2px solid var(--grey);
+    font-weight: bold;
+    font-size: 2.6rem;
+}
+
+.library .library--categories:first-of-type,
+.book--row li:first-of-type{
     border-left: none;
 }
 
+.library--button{
+    font-size: 2rem;
+    background: var(--accent);
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    color: white;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+/* Book rows */
+
 .library--list{
+    display: grid;
     grid-column: 1 / -1;
     width: 100%;
 }
 
 .book--row{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 3fr 3fr 3fr 3fr 1fr ;
     align-items: center;
     justify-items: center;
     list-style-type: none;
     text-transform: capitalize;
     padding: 0;
     font-weight: normal;
-    font-size: 20px;
+    margin: 0;
 }
 
-.displayFormButton{
-    grid-column: 1;
-    background:var(--purple);
-    color: white;
-    border:none;
+.book--row li{
+    border-bottom: 1px solid var(--grey);
+    border-left: 1px solid var(--grey);
+    font-size: 2.2rem;
+}
+
+
+.book--row li{
+    height: 100%;
+    overflow: hidden;
+}
+
+.book--button{
+    height: 100%;
+    vertical-align: middle;
+    border: none;
+}
+
+.book--button__read{
+    background: white;
+    font-size: 1.8rem;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    color: var(--primary);
     border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 16px;
-    margin: 5px 0;
 }
-/* 
+
+.book--button__delete{
+    background-image: url("trash.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image:url("trash.svg");
+    border-radius: 3px;
+}
+
 .addBook--form{
-    display: none;
+    position: absolute;
+    top:-100%;
+    left: -100%;
 }
- */
+
+.displayForm{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: var(--accent);
+    color: white;
+    border-radius: 5px;
+    padding: 4.5rem 3rem;
+    border:4px solid var(--accent);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    
+}
+
+.addBook--form ul{
+    padding: 0;
+    list-style-type: none;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.addBook--form ul li{
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 3fr;
+    padding-bottom: 10px;
+}
+
+.addBook--form li input,
+.addBook--form li select{
+    height: 100%;
+    text-align: left;
+    justify-self: start;
+}
+
+.addBook--button{
+    font-size: 2rem;
+    background: var(--primary);
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    color: white;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 800px){
+    .addBook--form ul li{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (max-width: 600px){
+    html{
+        font-size: 7px;
+    }
+}
